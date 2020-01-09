@@ -82,6 +82,16 @@ view: order_details {
     }
   }
 
+  measure: number_of_cans {
+    type: sum_distinct
+    sql_distinct_key: ${variant_id} ;;
+    sql: ${quantity} ;;
+    filters: {
+      field: variant_type
+      value: "Can%"
+    }
+  }
+
 
 
 #
