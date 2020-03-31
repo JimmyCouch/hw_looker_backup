@@ -10,6 +10,7 @@ datagroup: hw_default_datagroup {
 
 persist_with: hw_default_datagroup
 
+label: "Test"
 
 explore: customers {
   join: orders {
