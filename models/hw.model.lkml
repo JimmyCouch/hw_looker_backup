@@ -11,3 +11,21 @@ datagroup: hw_default_datagroup {
 persist_with: hw_default_datagroup
 
 label: "xhw"
+
+
+explore: orders {
+
+  always_join: [line_items]
+
+  join: line_items {
+    sql: ${orders.id} = ${line_items.order_id} ;;
+    relationship: one_to_many
+    type: left_outer
+  }
+
+  join: products {
+    sql: ${line_items.product_id} = ${products.id} ;;
+    relationship: one_to_many
+    type: left_outer
+  }
+}
