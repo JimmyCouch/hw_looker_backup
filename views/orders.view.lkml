@@ -154,24 +154,29 @@ view: orders {
   dimension: order_buyer_accepts_marketing {
     type: yesno
     sql: ${TABLE}."order_buyer_accepts_marketing" ;;
+    label: "Accepts Marketing"
   }
 
   dimension: order_cancel_reason {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_cancel_reason" ;;
   }
 
   dimension: order_cancelled_at {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_cancelled_at" ;;
   }
 
   dimension: order_checkout_id {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_checkout_id" ;;
   }
 
   dimension_group: order_closed {
+    hidden: yes
     type: time
     timeframes: [
       raw,
@@ -242,9 +247,11 @@ view: orders {
   dimension: order_email {
     type: string
     sql: ${TABLE}."order_email" ;;
+    label: "Customer Email"
   }
 
   dimension: order_financial_status {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_financial_status" ;;
   }
@@ -296,11 +303,13 @@ view: orders {
   }
 
   dimension: order_order_number {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_order_number" ;;
   }
 
   dimension: order_payment_gateway_names {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_payment_gateway_names" ;;
   }
@@ -311,6 +320,7 @@ view: orders {
   }
 
   dimension: order_presentment_currency {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_presentment_currency" ;;
   }
