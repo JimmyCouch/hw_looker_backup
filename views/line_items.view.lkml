@@ -2,8 +2,15 @@ view: line_items {
   sql_table_name: public.line_items ;;
   drill_fields: [amazon_line_item_id]
 
-  dimension: amazon_line_item_id {
+
+
+  dimension: id {
     primary_key: yes
+    type: number
+    sql: ${TABLE}."id" ;;
+  }
+
+  dimension: amazon_line_item_id {
     type: string
     sql: ${TABLE}."amazon_line_item_id" ;;
   }
@@ -52,10 +59,6 @@ view: line_items {
     sql: ${TABLE}."grams" ;;
   }
 
-  dimension: id {
-    type: number
-    sql: ${TABLE}."id" ;;
-  }
 
   dimension: name {
     type: string
@@ -154,6 +157,12 @@ view: line_items {
   dimension: vendor {
     type: string
     sql: ${TABLE}."vendor" ;;
+  }
+
+  measure: order_sum {
+    type: sum_distinct
+    sql: ${price} ;;
+    sql_distinct_key: ${order_id} ;;
   }
 
   measure: count {
