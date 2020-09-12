@@ -1,11 +1,16 @@
 view: line_items {
   sql_table_name: public.line_items ;;
-  drill_fields: [id]
+  drill_fields: [amazon_line_item_id]
 
-  dimension: id {
+  dimension: amazon_line_item_id {
     primary_key: yes
-    type: number
-    sql: ${TABLE}."id" ;;
+    type: string
+    sql: ${TABLE}."amazon_line_item_id" ;;
+  }
+
+  dimension: asin {
+    type: string
+    sql: ${TABLE}."asin" ;;
   }
 
   dimension_group: created {
@@ -47,6 +52,11 @@ view: line_items {
     sql: ${TABLE}."grams" ;;
   }
 
+  dimension: id {
+    type: number
+    sql: ${TABLE}."id" ;;
+  }
+
   dimension: name {
     type: string
     sql: ${TABLE}."name" ;;
@@ -54,7 +64,6 @@ view: line_items {
 
   dimension: order_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}."order_id" ;;
   }
 
@@ -70,14 +79,7 @@ view: line_items {
 
   dimension: product_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}."product_id" ;;
-  }
-
-  dimension: product_variant_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}."product_variant_id" ;;
   }
 
   dimension: properties {
@@ -100,14 +102,14 @@ view: line_items {
     sql: ${TABLE}."shopify_id" ;;
   }
 
-  dimension: shopify_variant_id {
-    type: string
-    sql: ${TABLE}."shopify_variant_id" ;;
-  }
-
   dimension: sku {
     type: string
     sql: ${TABLE}."sku" ;;
+  }
+
+  dimension: tax {
+    type: string
+    sql: ${TABLE}."tax" ;;
   }
 
   dimension: taxable {
@@ -156,25 +158,6 @@ view: line_items {
 
   measure: count {
     type: count
-    drill_fields: [detail*]
-  }
-
-  # ----- Sets of fields for drilling ------
-  set: detail {
-    fields: [
-      id,
-      name,
-      product_variants.id,
-      products.id,
-      orders.billing_address_name,
-      orders.billing_address_first_name,
-      orders.order_name,
-      orders.shipping_address_last_name,
-      orders.shipping_address_name,
-      orders.billing_address_last_name,
-      orders.order_source_name,
-      orders.id,
-      orders.shipping_address_first_name
-    ]
+    drill_fields: [amazon_line_item_id, name]
   }
 }

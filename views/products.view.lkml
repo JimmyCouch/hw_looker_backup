@@ -8,51 +8,78 @@ view: products {
     sql: ${TABLE}."id" ;;
   }
 
-  dimension_group: created {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."created_at" ;;
-  }
-
-  dimension: shopify_handle {
+  dimension: amazon_id {
     type: string
-    sql: ${TABLE}."shopify_handle" ;;
+    sql: ${TABLE}."amazon_id" ;;
   }
 
-  dimension: shopify_id {
+  dimension: amazon_price {
     type: number
-    sql: ${TABLE}."shopify_id" ;;
+    sql: ${TABLE}."amazon_price" ;;
   }
 
-  dimension: shopify_title {
+  dimension: asin {
     type: string
-    sql: ${TABLE}."shopify_title" ;;
+    sql: ${TABLE}."asin" ;;
   }
 
-  dimension_group: updated {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."updated_at" ;;
+  dimension: name {
+    type: string
+    sql: ${TABLE}."name" ;;
+  }
+
+  dimension: product_type {
+    type: string
+    sql: ${TABLE}."product_type" ;;
+  }
+
+  dimension: shopify_price {
+    type: number
+    sql: ${TABLE}."shopify_price" ;;
+  }
+
+  dimension: shopify_variant_id {
+    type: string
+    sql: ${TABLE}."shopify_variant_id" ;;
+  }
+
+  dimension: sku {
+    type: string
+    sql: ${TABLE}."sku" ;;
+  }
+
+  dimension: sold_on_fba {
+    type: yesno
+    sql: ${TABLE}."sold_on_fba" ;;
+  }
+
+  dimension: sold_on_shopify {
+    type: yesno
+    sql: ${TABLE}."sold_on_shopify" ;;
+  }
+
+  dimension: sold_on_vc {
+    type: yesno
+    sql: ${TABLE}."sold_on_vc" ;;
+  }
+
+  dimension: sold_on_walmart {
+    type: yesno
+    sql: ${TABLE}."sold_on_walmart" ;;
+  }
+
+  dimension: unit_quantity {
+    type: string
+    sql: ${TABLE}."unit_quantity" ;;
+  }
+
+  dimension: upc {
+    type: string
+    sql: ${TABLE}."upc" ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [id, line_items.count, product_variants.count]
+    drill_fields: [id, name]
   }
 }

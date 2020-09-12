@@ -1,13 +1,22 @@
 view: orders {
   sql_table_name: public.orders ;;
-  drill_fields: [id]
+  drill_fields: [amazon_order_id]
 
-  dimension: id {
+  dimension: amazon_order_id {
     primary_key: yes
-    type: number
-    sql: ${TABLE}."id" ;;
+    type: string
+    sql: ${TABLE}."amazon_order_id" ;;
   }
 
+  dimension: amazon_next_token {
+    type: string
+    sql: ${TABLE}."amazon_next_token" ;;
+  }
+
+  dimension: amazon_seller_id {
+    type: string
+    sql: ${TABLE}."amazon_seller_id" ;;
+  }
 
   dimension: billing_address_address1 {
     type: string
@@ -98,6 +107,21 @@ view: orders {
     sql: ${TABLE}."created_at" ;;
   }
 
+  dimension: discount_code {
+    type: string
+    sql: ${TABLE}."discount_code" ;;
+  }
+
+  dimension: id {
+    type: number
+    sql: ${TABLE}."id" ;;
+  }
+
+  dimension: is_prime {
+    type: string
+    sql: ${TABLE}."is_prime" ;;
+  }
+
   dimension: order_app_id {
     type: string
     sql: ${TABLE}."order_app_id" ;;
@@ -123,19 +147,9 @@ view: orders {
     sql: ${TABLE}."order_cancelled_at" ;;
   }
 
-  dimension: order_cart_token {
-    type: string
-    sql: ${TABLE}."order_cart_token" ;;
-  }
-
   dimension: order_checkout_id {
     type: string
     sql: ${TABLE}."order_checkout_id" ;;
-  }
-
-  dimension: order_checkout_token {
-    type: string
-    sql: ${TABLE}."order_checkout_token" ;;
   }
 
   dimension_group: order_closed {
@@ -221,12 +235,6 @@ view: orders {
     sql: ${TABLE}."order_gateway" ;;
   }
 
-  dimension: order_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}."order_id" ;;
-  }
-
   dimension: order_landing_site {
     type: string
     sql: ${TABLE}."order_landing_site" ;;
@@ -265,11 +273,6 @@ view: orders {
   dimension: order_order_number {
     type: string
     sql: ${TABLE}."order_order_number" ;;
-  }
-
-  dimension: order_order_status_url {
-    type: string
-    sql: ${TABLE}."order_order_status_url" ;;
   }
 
   dimension: order_payment_gateway_names {
@@ -332,7 +335,7 @@ view: orders {
   }
 
   dimension: order_subtotal_price {
-    type: string
+    type: number
     sql: ${TABLE}."order_subtotal_price" ;;
   }
 
@@ -349,16 +352,6 @@ view: orders {
   dimension: order_taxes_included {
     type: yesno
     sql: ${TABLE}."order_taxes_included" ;;
-  }
-
-  dimension: order_test {
-    type: yesno
-    sql: ${TABLE}."order_test" ;;
-  }
-
-  dimension: order_token {
-    type: string
-    sql: ${TABLE}."order_token" ;;
   }
 
   dimension: order_total_discounts {
@@ -410,9 +403,24 @@ view: orders {
     sql: ${TABLE}."order_user_id" ;;
   }
 
+  dimension: order_weight {
+    type: number
+    sql: ${TABLE}."order_weight" ;;
+  }
+
   dimension: raw_response {
     type: string
     sql: ${TABLE}."raw_response" ;;
+  }
+
+  dimension: sales_channel {
+    type: string
+    sql: ${TABLE}."sales_channel" ;;
+  }
+
+  dimension: ship_service_level {
+    type: string
+    sql: ${TABLE}."ship_service_level" ;;
   }
 
   dimension: shipping_address_address1 {
@@ -495,6 +503,11 @@ view: orders {
     sql: ${TABLE}."shopify_customer_id" ;;
   }
 
+  dimension: shopify_order_id {
+    type: number
+    sql: ${TABLE}."shopify_order_id" ;;
+  }
+
   dimension_group: updated {
     type: time
     timeframes: [
@@ -509,43 +522,37 @@ view: orders {
     sql: ${TABLE}."updated_at" ;;
   }
 
+  dimension_group: updated_batch {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}."updated_batch_time" ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
   }
 
-  measure: sum_of_sales {
-    type: sum
-    sql: ${order_total_price} ;;
-    value_format_name: usd
-  }
-
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-      id,
-      billing_address_name,
-      billing_address_first_name,
+      amazon_order_id,
       order_name,
-      shipping_address_last_name,
-      shipping_address_name,
-      billing_address_last_name,
       order_source_name,
+      billing_address_first_name,
+      billing_address_last_name,
+      billing_address_name,
       shipping_address_first_name,
-      orders.billing_address_name,
-      orders.billing_address_first_name,
-      orders.order_name,
-      orders.shipping_address_last_name,
-      orders.shipping_address_name,
-      orders.billing_address_last_name,
-      orders.order_source_name,
-      orders.id,
-      orders.shipping_address_first_name,
-      discount_applications.count,
-      discount_codes.count,
-      line_items.count,
-      orders.count,
-      order_tax_lines.count
+      shipping_address_last_name,
+      shipping_address_name
     ]
   }
 }
