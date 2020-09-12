@@ -9,86 +9,103 @@ view: orders {
   }
 
   dimension: amazon_next_token {
+    hidden: yes
     type: string
     sql: ${TABLE}."amazon_next_token" ;;
   }
 
   dimension: amazon_seller_id {
+    hidden: yes
     type: string
     sql: ${TABLE}."amazon_seller_id" ;;
   }
 
   dimension: billing_address_address1 {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_address1" ;;
   }
 
   dimension: billing_address_address2 {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_address2" ;;
   }
 
   dimension: billing_address_city {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_city" ;;
   }
 
   dimension: billing_address_company {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_company" ;;
   }
 
   dimension: billing_address_country {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_country" ;;
   }
 
   dimension: billing_address_country_code {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_country_code" ;;
   }
 
   dimension: billing_address_first_name {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_first_name" ;;
   }
 
   dimension: billing_address_last_name {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_last_name" ;;
   }
 
   dimension: billing_address_latitude {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_latitude" ;;
   }
 
   dimension: billing_address_longitude {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_longitude" ;;
   }
 
   dimension: billing_address_name {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_name" ;;
   }
 
   dimension: billing_address_phone {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_phone" ;;
   }
 
   dimension: billing_address_province {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_province" ;;
   }
 
   dimension: billing_address_province_code {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_province_code" ;;
   }
 
   dimension: billing_address_zip {
+    hidden: yes
     type: string
     sql: ${TABLE}."billing_address_zip" ;;
   }
@@ -123,11 +140,13 @@ view: orders {
   }
 
   dimension: order_app_id {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_app_id" ;;
   }
 
   dimension: order_browser_ip {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_browser_ip" ;;
   }
@@ -191,26 +210,31 @@ view: orders {
   }
 
   dimension: order_currency {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_currency" ;;
   }
 
   dimension: order_customer_locale {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_customer_locale" ;;
   }
 
   dimension: order_device_id {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_device_id" ;;
   }
 
   dimension: order_discount_applications {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_discount_applications" ;;
   }
 
   dimension: order_discount_codes {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_discount_codes" ;;
   }
@@ -246,6 +270,7 @@ view: orders {
   }
 
   dimension: order_location_id {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_location_id" ;;
   }
@@ -310,6 +335,7 @@ view: orders {
   }
 
   dimension: order_reference {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_reference" ;;
   }
@@ -345,6 +371,7 @@ view: orders {
   }
 
   dimension: order_tax_lines {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_tax_lines" ;;
   }
@@ -370,6 +397,7 @@ view: orders {
   }
 
   dimension: order_total_price_usd {
+    hidden: yes
     type: number
     sql: ${TABLE}."order_total_price_usd" ;;
   }
@@ -380,6 +408,7 @@ view: orders {
   }
 
   dimension: order_total_weight {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_total_weight" ;;
   }
@@ -399,16 +428,19 @@ view: orders {
   }
 
   dimension: order_user_id {
+    hidden: yes
     type: string
     sql: ${TABLE}."order_user_id" ;;
   }
 
   dimension: order_weight {
+    hidden: yes
     type: number
     sql: ${TABLE}."order_weight" ;;
   }
 
   dimension: raw_response {
+    hidden: yes
     type: string
     sql: ${TABLE}."raw_response" ;;
   }
@@ -499,6 +531,7 @@ view: orders {
   }
 
   dimension: shopify_customer_id {
+    hidden: yes
     type: number
     sql: ${TABLE}."shopify_customer_id" ;;
   }
@@ -523,6 +556,7 @@ view: orders {
   }
 
   dimension_group: updated_batch {
+    hidden: yes
     type: time
     timeframes: [
       raw,
