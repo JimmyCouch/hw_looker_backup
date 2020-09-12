@@ -233,7 +233,6 @@ view: orders {
       year
     ]
     sql: ${TABLE}."order_created_at" ;;
-    group_label: "          Details"
   }
 
   dimension: order_currency {
