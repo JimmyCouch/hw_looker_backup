@@ -18,13 +18,13 @@ explore: orders {
   always_join: [line_items]
 
   join: line_items {
-    sql: ${orders.id} = ${line_items.order_id} ;;
+    sql_on: ${orders.id} = ${line_items.order_id} ;;
     relationship: one_to_many
     type: left_outer
   }
 
   join: products {
-    sql: ${line_items.product_id} = ${products.id} ;;
+    sql_on: ${line_items.product_id} = ${products.id} ;;
     relationship: one_to_many
     type: left_outer
   }

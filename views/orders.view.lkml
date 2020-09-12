@@ -536,6 +536,12 @@ view: orders {
     sql: ${TABLE}."updated_batch_time" ;;
   }
 
+  measure: order_sum {
+    type: sum_distinct
+    sql_distinct_key: ${order_number} ;;
+    sql: ${order_total_price} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
