@@ -235,6 +235,18 @@ view: orders {
     sql: ${TABLE}."order_created_at" ;;
   }
 
+  dimension: order_month_name {
+    type: date_month_name
+    sql: ${TABLE}."order_created_at" ;;
+    group_label: "Order Created Date"
+  }
+
+  dimension: order_month_number {
+    type: date_month_num
+    sql: ${TABLE}."order_created_at" ;;
+    group_label: "Order Created Date"
+  }
+
   dimension: order_currency {
     hidden: yes
     type: string
