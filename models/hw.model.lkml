@@ -20,7 +20,7 @@ explore: orders {
   join: line_items {
     sql_on: ${orders.id} = ${line_items.order_id} ;;
     relationship: one_to_many
-    type: left_outer
+    type: inner
   }
 
   join: products {

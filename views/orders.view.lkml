@@ -669,6 +669,7 @@ view: orders {
     type: sum_distinct
     sql_distinct_key: ${order_number} ;;
     sql: ${order_total_price} ;;
+    value_format_name: usd_0
   }
 
   measure: count {
