@@ -247,6 +247,12 @@ view: orders {
     group_label: "Order Created Date"
   }
 
+  dimension: order_year_name {
+    type: date_year
+    sql: ${TABLE}."order_created_at" ;;
+    group_label: "Order Created Date"
+  }
+
   dimension: order_currency {
     hidden: yes
     type: string
