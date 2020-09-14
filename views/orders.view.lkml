@@ -253,6 +253,37 @@ view: orders {
     group_label: "Order Created Date"
   }
 
+  dimension: order_day_of_year {
+    type: date_day_of_year
+    sql: ${TABLE}."order_created_at" ;;
+    group_label: "Order Created Date"
+  }
+
+
+  dimension: order_day_of_month_number {
+    type: date_day_of_month
+    sql: ${TABLE}."order_created_at" ;;
+    group_label: "Other"
+  }
+
+  dimension: order_year_name_number {
+    type: number
+    sql: ${order_year_name} ;;
+    group_label: "Other"
+  }
+
+  dimension: max_day_of_month_number {
+    type: number
+    sql: (
+      SELECT MAX(${order_day_of_year}) FROM ${TABLE} WHERE ${order_year_name} = '2020'
+    );;
+    group_label: "Other"
+  }
+
+
+
+
+
   dimension: order_currency {
     hidden: yes
     type: string
