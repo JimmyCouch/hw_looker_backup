@@ -628,15 +628,26 @@ view: orders {
   }
 
   dimension: shipping_address_latitude {
-    type: string
-    sql: ${TABLE}."shipping_address_latitude" ;;
+    type: number
+    sql: CAST(${TABLE}."shipping_address_latitude" AS FLOAT) ;;
     group_label: "Shipping"
   }
 
   dimension: shipping_address_longitude {
-    type: string
-    sql: ${TABLE}."shipping_address_longitude" ;;
+    type: number
+    sql: CAST(${TABLE}."shipping_address_longitude" AS FLOAT) ;;
     group_label: "Shipping"
+  }
+
+  dimension: location {
+    type: location
+    sql_latitude: ${shipping_address_latitude} ;;
+    sql_longitude: ${shipping_address_longitude} ;;
+  }
+
+  dimension: location_zip {
+    type: zipcode
+    sql: ${shipping_address_zip} ;;
   }
 
   dimension: shipping_address_name {
