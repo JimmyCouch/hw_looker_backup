@@ -78,6 +78,11 @@ view: products {
     sql: ${TABLE}."upc" ;;
   }
 
+  dimension: product_type_attribute {
+    type: string
+    sql: ${TABLE}."product_type_attribute" ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, name]
